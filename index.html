@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>英打遊戲開發歷程</title><style>
+[hidden]{display:none!important}:root{font-family:system-ui,"Microsoft JhengHei",sans-serif;color:#243e38;background:#f5f3ec;line-height:1.7}*{box-sizing:border-box}body{margin:0}main{max-width:1040px;margin:auto;padding:36px 24px}h1{font-size:clamp(28px,4.5vw,44px);line-height:1.3;margin:12px 0 18px}h2{font-size:22px}p{margin:12px 0}a{color:#205d50}button{font:inherit}button,.action{display:inline-block;padding:12px 22px;border:1px solid #426d5e;background:#426d5e;color:#fff;border-radius:12px;text-decoration:none;cursor:pointer}button.secondary{background:#fff;color:#284c40}button:disabled{opacity:.5;cursor:default}button:hover:not(:disabled),.action:hover{filter:brightness(.95)}:focus-visible{outline:3px solid #b16b35;outline-offset:4px}.eyebrow{font-size:13px;letter-spacing:.14em;color:#596f62}.panel{background:white;border:1px solid #ccd7ce;border-radius:20px;padding:24px;margin:20px 0}.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.msg{min-height:2em}.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}label{display:block}small{color:#526459}.controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center}.controls label{flex:1;min-width:200px}input[type=range]{width:100%;accent-color:#426d5e}.sky{height:300px;position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(#e2edf0,#f5f0df);border-bottom:8px solid #a5b794}.sky:before{content:"落地前，按下對應的英文字母";position:absolute;top:12px;left:16px;color:#506664;font-size:13px}.falling{position:absolute;left:50%;transform:translateX(-50%);width:60px;height:60px;display:grid;place-items:center;border-radius:16px;background:#ab4939;color:white;font-size:36px;font-weight:bold;box-shadow:0 6px 0 #d2aa92}.card{display:flex;flex-direction:column;background:white;border:1px solid #ccd7ce;border-radius:18px;padding:24px;min-height:260px}.card p{flex:1}.badge{font-size:12px;color:#526459}.card a{margin-top:14px}.keyboard-wrap{overflow:auto;padding:10px 0}.keyboard{min-width:620px;max-width:870px;margin:auto;background:#d5ddd5;padding:14px;border-radius:18px}.keyrow{display:flex;justify-content:center;gap:6px;margin:6px 0}.key{display:grid;place-items:center;width:52px;height:48px;border-radius:8px;border:1px solid #98ad9e;border-bottom-width:4px;background:#f9faf4;color:#53645a;font-size:20px;font-weight:700}.key.practice{background:#e4bbab;color:#452e25}.key.lit{background:#a1332e;color:white;border-color:#682a28;box-shadow:0 0 0 3px #f1d6bc;transform:translateY(-2px)}.key.lit:after{content:'●';font-size:7px;line-height:1}.score{display:flex;gap:14px;flex-wrap:wrap}.score span{background:#edf1e9;padding:8px 14px;border-radius:10px}.score b{font-size:26px}.target{font-size:80px;font-weight:800;line-height:1.2;margin:14px}.game{text-align:center;outline-offset:5px}.help{font-size:14px}@media(max-width:700px){main{padding:22px 14px}.card{min-height:190px}.panel{padding:16px}}
+</style></head><body>
+
+<main id="home" class="page"><p class="eyebrow">MY TYPING JOURNEY</p><h1>英打遊戲開發歷程</h1><p>從第一個頁面開始，記錄每一次完成的小進步。</p><div class="cards">
+<article class="card"><span class="badge">VERSION 01</span><h2>版本1</h2><p>一個標題、一個按鈕。我的第一次網站部署。</p><a class="action" href="#v1">開啟版本1</a></article>
+<article class="card"><span class="badge">VERSION 02</span><h2>版本2</h2><p>加入外部圖片與聲音，讓遊戲預告有了聲音。</p><a class="action" href="#v2">開啟版本2</a></article>
+<article class="card"><span class="badge">VERSION 03</span><h2>版本3</h2><p>左手 ASDF 打字練習。</p><a class="action" href="#v3">開始練習</a></article>
+<article class="card"><span class="badge">VERSION 04</span><h2>版本4</h2><p>字母從天空掉下來，在落地前按對按鍵。</p><a class="action" href="#v4">開始練習</a></article>
+</div></main>
+
+<main id="v1" class="page" hidden><h1>英打遊戲版本一</h1><button type="button">開始</button><p><a href="#home">← 回開發歷程</a></p></main>
+
+<main id="v2" class="page" hidden><a href="#home">← 回開發歷程</a><p class="eyebrow">TYPING PREVIEW</p><h1>英打遊戲版本 2</h1><p>先暖暖手，遊戲即將登場。</p><section class="panel"><img id="keyboardImage" src="keyboard.png" alt="英文鍵盤示意圖，中央列為 ASDFGHJKL 與分號" style="width:100%;height:auto;display:block"><div class="row"><button id="v2start" type="button">開始</button><span>按下後會發出兩聲嗶聲。</span></div><p id="v2msg" class="msg" role="status">這是預告畫面，尚未開放打字遊戲。</p><audio id="beep" preload="auto" src="beep.wav"></audio></section></main>
+
+<main id="v3" class="page" hidden><a href="#home">← 回開發歷程</a><p class="eyebrow">VERSION 03 · LEFT HAND</p><h1>英打遊戲版本 3</h1><p>把左手放在 A、S、D、F，按下亮起的按鍵。</p><div class="row"><button id="v3start">開始／重新開始</button><button id="v3stop" class="secondary">停止練習</button></div><section id="play" class="panel game" tabindex="0" aria-label="ASDF 遊戲區"><div class="score"><span>得分 <b id="score">0</b></span><span>按錯 <b id="wrong">0</b></span></div><div id="target" class="target">—</div><div class="keyboard-wrap"><div class="keyboard" aria-label="英文鍵盤，紅色並有圓點的按鍵是目前目標"><div class="keyrow"><span class="key" data-key="q">Q</span><span class="key" data-key="w">W</span><span class="key" data-key="e">E</span><span class="key" data-key="r">R</span><span class="key" data-key="t">T</span><span class="key" data-key="y">Y</span><span class="key" data-key="u">U</span><span class="key" data-key="i">I</span><span class="key" data-key="o">O</span><span class="key" data-key="p">P</span></div><div class="keyrow"><span class="key practice" data-key="a">A</span><span class="key practice" data-key="s">S</span><span class="key practice" data-key="d">D</span><span class="key practice" data-key="f">F</span><span class="key" data-key="g">G</span><span class="key" data-key="h">H</span><span class="key" data-key="j">J</span><span class="key" data-key="k">K</span><span class="key" data-key="l">L</span><span class="key" data-key=";">;</span></div><div class="keyrow"><span class="key" data-key="z">Z</span><span class="key" data-key="x">X</span><span class="key" data-key="c">C</span><span class="key" data-key="v">V</span><span class="key" data-key="b">B</span><span class="key" data-key="n">N</span><span class="key" data-key="m">M</span></div></div></div><p id="v3msg" class="msg" role="status">按開始，再使用實體鍵盤作答。</p></section><p class="help">請切換英文輸入；大寫與小寫都接受。長按不連續計分，按錯保留原題。</p></main>
+
+<main id="v4" class="page" hidden><a href="#home">← 回開發歷程</a><p class="eyebrow">VERSION 04 · CATCH THE LETTERS</p><h1>英打遊戲版本 4</h1><p>在字母落地之前按對按鍵。練習 A S D F G H J K L ;。</p><section class="panel"><div class="controls"><label for="g4speed">每個字母落地時間：<strong id="g4speedLabel">8 秒</strong><input id="g4speed" type="range" min="3" max="14" step="1" value="8"><small>秒數越大，掉得越慢。初學可用 10～14 秒。</small></label><label><input id="g4auto" type="checkbox"> 漸進加速：每答對三題縮短一秒，最快三秒</label></div><div class="row"><button id="g4start">開始／重新開始</button><button id="g4pause" class="secondary" disabled>暫停</button><span>目前落地時間：<b id="g4actual">8 秒</b></span></div></section><section id="g4play" tabindex="0" class="panel game" aria-label="掉落字母遊戲"><div class="score"><span>接住 <b id="g4score">0</b></span><span>落地 <b id="g4miss">0</b></span><span>按錯 <b id="g4wrong">0</b></span><span>完成 <b id="g4round">0</b> / 10</span></div><div id="g4sky" class="sky"><div id="g4falling" class="falling" hidden>—</div></div><div class="keyboard-wrap"><div class="keyboard" aria-label="英文鍵盤，紅色並有圓點的按鍵是目前目標"><div class="keyrow"><span class="key" data-key="q">Q</span><span class="key" data-key="w">W</span><span class="key" data-key="e">E</span><span class="key" data-key="r">R</span><span class="key" data-key="t">T</span><span class="key" data-key="y">Y</span><span class="key" data-key="u">U</span><span class="key" data-key="i">I</span><span class="key" data-key="o">O</span><span class="key" data-key="p">P</span></div><div class="keyrow"><span class="key practice" data-key="a">A</span><span class="key practice" data-key="s">S</span><span class="key practice" data-key="d">D</span><span class="key practice" data-key="f">F</span><span class="key practice" data-key="g">G</span><span class="key practice" data-key="h">H</span><span class="key practice" data-key="j">J</span><span class="key practice" data-key="k">K</span><span class="key practice" data-key="l">L</span><span class="key practice" data-key=";">;</span></div><div class="keyrow"><span class="key" data-key="z">Z</span><span class="key" data-key="x">X</span><span class="key" data-key="c">C</span><span class="key" data-key="v">V</span><span class="key" data-key="b">B</span><span class="key" data-key="n">N</span><span class="key" data-key="m">M</span></div></div></div><p id="g4message" class="msg" role="status">按開始，用實體鍵盤接住字母；每次只出現一個。</p></section><p class="help">請切換英文輸入。按錯不消除目標；落地記錄一次，不扣生命。長按不連續消除。調整設定、切換分頁或離開視窗會暫停，按繼續恢復。</p></main>
+
+<script>
+const $=id=>document.getElementById(id);
+
+/* ===== 頁面切換：用網址的 #v1 #v2 #v3 ===== */
+const pages=[...document.querySelectorAll('.page')],titles={home:'英打遊戲開發歷程',v1:'英打遊戲版本一',v2:'英打遊戲版本 2',v3:'英打遊戲版本 3',v4:'英打遊戲版本 4'};
+function route(){const h=location.hash.slice(1),id=titles[h]?h:'home';pages.forEach(p=>p.hidden=p.id!==id);document.title=titles[id];stopV3('');if(window.stopV4)window.stopV4();scrollTo(0,0);}
+addEventListener('hashchange',route);
+
+/* ===== 版本2：圖片與聲音 ===== */
+const sound=$('beep'),m2=$('v2msg'),b2=$('v2start');
+$('keyboardImage').addEventListener('error',()=>m2.textContent='圖片未載入，請把 keyboard.png 放在 index.html 旁邊。');
+function webBeeps(){const C=window.AudioContext||window.webkitAudioContext,ctx=new C();[0,.3].forEach(t=>{const o=ctx.createOscillator(),g=ctx.createGain();o.frequency.value=880;g.gain.value=.2;o.connect(g);g.connect(ctx.destination);o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.15);});return new Promise(r=>setTimeout(r,600));}
+b2.addEventListener('click',async()=>{b2.disabled=true;try{try{sound.currentTime=0;await sound.play();}catch(e){await webBeeps();b2.disabled=false;}m2.textContent='嗶嗶！這是遊戲預告，目前還不能玩。';}catch(e){m2.textContent='聲音無法播放，請確認瀏覽器允許播放。';b2.disabled=false;}});
+sound.addEventListener('ended',()=>b2.disabled=false);
+
+/* ===== 版本3：ASDF 練習 ===== */
+const keyNodes=[...document.querySelectorAll('#v3 [data-key]')],KEYS=['a','s','d','f'];let playing=false,target=null,score=0,wrong=0;
+const chooseKey=(keys,prev)=>{const pool=keys.filter(k=>k!==prev);return pool[Math.floor(Math.random()*pool.length)];};
+const markKey=key=>keyNodes.forEach(n=>n.classList.toggle('lit',n.dataset.key===key));
+function next(){target=chooseKey(KEYS,target);$('target').textContent=target.toUpperCase();markKey(target);}
+function renderScore(){$('score').textContent=score;$('wrong').textContent=wrong;}
+function stopV3(text){playing=false;target=null;markKey(null);$('target').textContent='—';if(text)$('v3msg').textContent=text;}
+$('v3start').addEventListener('click',()=>{playing=true;score=wrong=0;renderScore();next();$('v3msg').textContent='請按下紅色亮起的按鍵。';$('play').focus();});
+$('v3stop').addEventListener('click',()=>stopV3('已停止，可重新開始。'));
+document.addEventListener('keydown',e=>{if(!playing||(e.target instanceof Element&&e.target.closest('input,select,textarea,button,a,summary')))return;if(e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.repeat)return;const key=String(e.key).toLowerCase();if(!/^[a-z;]$/.test(key))return;e.preventDefault();if(key===target){score++;$('v3msg').textContent='答對！換下一個字母。';next();}else{wrong++;$('v3msg').textContent='再試一次：請按 '+target.toUpperCase()+'。';}renderScore();});
+addEventListener('blur',()=>{if(playing)stopV3('視窗已離開，練習停止。回來後按重新開始。');});
+/* ===== 版本4：掉落字母 ===== */
+(function(){
+const $=id=>document.getElementById('g4'+id);const keyNodes=[...document.querySelectorAll('#v4 [data-key]')];
+function chooseKey(keys,previous,random=Math.random){const pool=keys.filter(k=>k!==previous);return pool[Math.floor(random()*pool.length)];}
+function markKey(key){keyNodes.forEach(node=>node.classList.toggle('lit',node.dataset.key===key));}
+function isControl(target){return target instanceof Element&&!!target.closest('input,select,textarea,button,a,summary');}
+function inputKey(e){return e.isComposing||e.ctrlKey||e.metaKey||e.altKey||e.repeat?null:String(e.key).toLowerCase();}
+const KEYS=['a','s','d','f','g','h','j','k','l',';'];const ROUND_LENGTH=10;
+let state={running:false,paused:false,score:0,miss:0,wrong:0,done:0,target:null,y:0},lastTime=null;
+function fallSeconds(base,score,auto){return Math.max(3,base-(auto?Math.floor(score/3):0));}
+function seconds(){return fallSeconds(Number($('speed').value),state.score,$('auto').checked);}
+function render(){$('score').textContent=state.score;$('miss').textContent=state.miss;$('wrong').textContent=state.wrong;$('round').textContent=state.done;$('speedLabel').textContent=$('speed').value+' 秒';$('actual').textContent=seconds()+' 秒';$('pause').disabled=!state.running;$('pause').textContent=state.paused?'繼續':'暫停';$('falling').hidden=!state.running;$('falling').style.top=(12+state.y*($('sky').clientHeight-80))+'px';}
+function next(){state.target=chooseKey(KEYS,state.target);state.y=0;$('falling').textContent=state.target.toUpperCase();markKey(state.target);}
+function finishLetter(hit){if(hit)state.score++;else state.miss++;state.done++;
+ if(state.done>=ROUND_LENGTH){state.running=false;state.target=null;markKey(null);$('message').textContent='本回合完成！接住 '+state.score+' 個，落地 '+state.miss+' 個。可調整速度再挑戰。';}
+ else{next();$('message').textContent=hit?'接住了！準備下一個。':'落地了，沒關係，下一個再試。';}render();}
+function advance(dt){if(!state.running||state.paused)return;state.y+=dt/seconds();if(state.y>=1)finishLetter(false);render();}
+function start(){state={running:true,paused:false,score:0,miss:0,wrong:0,done:0,target:null,y:0};lastTime=null;next();render();$('message').textContent='開始！一回合十個字母，落地不結束遊戲。';$('play').focus();}
+function pause(value){if(!state.running)return;state.paused=value;lastTime=null;render();$('message').textContent=value?'已暫停，按繼續後再玩。':'繼續挑戰！';}
+window.stopV4=function(){state.running=false;state.paused=false;state.target=null;lastTime=null;markKey(null);render();};
+$('start').addEventListener('click',start);$('pause').addEventListener('click',()=>{pause(!state.paused);$('play').focus();});
+$('speed').addEventListener('input',render);$('auto').addEventListener('change',render);
+for(const id of ['speed','auto'])$(id).addEventListener('focus',()=>pause(true));
+document.addEventListener('keydown',e=>{if(!state.running||state.paused||isControl(e.target))return;const key=inputKey(e);if(!key||!/^[a-z;]$/.test(key))return;e.preventDefault();if(key===state.target)finishLetter(true);else{state.wrong++;$('message').textContent='不是這一個，請按 '+state.target.toUpperCase()+'。';render();}});
+function frame(t){if(lastTime!==null)advance(Math.min((t-lastTime)/1000,.1));lastTime=t;requestAnimationFrame(frame);}
+addEventListener('blur',()=>pause(true));document.addEventListener('visibilitychange',()=>{if(document.hidden)pause(true);});
+render();requestAnimationFrame(frame);
+})();
+
+route(); /* 一定要放在最後：所有東西都準備好才切換頁面 */
+</script></body></html>
